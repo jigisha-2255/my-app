@@ -13,7 +13,7 @@
 <section>
 	<!-- <div class="parallax"></div> -->
 	<div class="parallax-video">
-		<video autoplay muted loop>
+		<video autoplay muted loop id="myVideo">
 			<source src="{intro}" type="video/mp4">
 		</video>
 	</div>
@@ -142,6 +142,13 @@
 		width:100vw;
 		height:1000px;
 	}
+	#myVideo{
+		position:fixed;
+		right:0;
+		bottom:0;
+		min-width:100%;
+		min-height:100%;
+	}
 	section {
 		display: flex;
 		flex-direction: column;
@@ -240,6 +247,7 @@
 		overflow-y:auto;
 		display: flex;
 		flex-direction:column;
+		z-index:11;
 	}
 
 	.bg-section3 .section3-content1{
@@ -283,6 +291,7 @@
 		display: flex;
 		flex-direction:column;
 		justify-content: space-between;
+		z-index:11;
 	}
 
 	.bg-section4 .section4-notes{
