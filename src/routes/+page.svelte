@@ -2,6 +2,7 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import intro from '$lib/video/intro.mp4';
 </script>
 
 <svelte:head>
@@ -11,6 +12,11 @@
 
 <section>
 	<!-- <div class="parallax"></div> -->
+	<div class="parallax-video">
+		<video autoplay muted loop>
+			<source src="{intro}" type="video/mp4">
+		</video>
+	</div>
 	<div class="bg-section1">
 		<div class="flex flex-row section1-content fade-in-text items-center justify-center text-white mx-10 lg:mx-36">
 			<p>
@@ -128,6 +134,14 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+	.parallax-video{
+		position: absolute;
+		top:85vh;
+	}
+	.parallax-video video{
+		width:100vw;
+		height:1000px;
+	}
 	section {
 		display: flex;
 		flex-direction: column;
@@ -195,13 +209,14 @@
 	
 	.bg-section2{
 		/* background-color: rgba(0,0,0,0.5); */
-		background-image: url($lib/images/mountain2.jpeg);
+		/* background-image: url($lib/images/mountain2.jpeg); */
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		height:calc(100vh - 70px);
 		display: flex;
 		flex-direction:column;
+		z-index:11;
 	}
 
 	.bg-section2 .section2-content{

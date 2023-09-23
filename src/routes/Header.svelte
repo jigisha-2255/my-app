@@ -67,7 +67,7 @@
 
 	.header-height{
 		height:70px;
-		z-index:11;
+		z-index:111;
 	}
 	.corner {
 		width: 3em;
