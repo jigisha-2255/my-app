@@ -1,8 +1,10 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
 	import intro from '$lib/video/intro.mp4';
+    import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+	let show=false;
+	onMount(()=>show=true);
+	let y = 0;
 </script>
 
 <svelte:head>
@@ -10,120 +12,170 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<!-- <div class="parallax"></div> -->
-	<div class="parallax-video">
-		<video autoplay muted loop id="myVideo">
-			<source src="{intro}" type="video/mp4">
-		</video>
-	</div>
-	<div class="bg-section1">
-		<div class="flex flex-row section1-content fade-in-text items-center justify-center text-white mx-10 lg:mx-36">
-			<p>
+<svelte:window bind:scrollY={y}/>
+	<section>
+		<!-- <div class="parallax"></div> -->
+		<div class="parallax-video">
+			<video autoplay muted loop id="myVideo">
+				<source src="{intro}" type="video/mp4">
+			</video>
+		</div>
+		
+		<div class="bg-section1">
+			{#if show && y >= 0}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="flex flex-row section1-content items-center justify-center text-white mx-10 lg:mx-36">
+				<p>
+					<span class="bg-black">
+						Every year, the world generated about 2.3 billion tonnes of municipal solid waste, of which
+					</span>
+					<span class="bg-sky">45% is mismanaged.</span>
+				</p>
+			</div>
+			{/if}
+		</div>
+		
+		<div class="bg-section2">
+			{#if show && y >= 100}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="flex flex-row section2-content items-center justify-center mx-10 lg:mx-36">
+				<p class="text-white">
+					<span class="bg-black">This resulted in an estimated</span>
+					<span class="bg-sky">60 million tonnes of plastic per year from the municipal solid waste stream</span>
+					<span class="bg-black">pollute the environment including water bodies, due to lack of collection services and mismanagement of solid waste."</span>
+				</p>
+			</div>
+			{/if}
+
+			{#if show && y >= 200}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section2-notes relative mx-7 lg:mx-36 rounded-md">
+				<div>
+					<i class="fa fa-search p-2 text-gray-400 search-icon"></i>
+					<i class="fa fa-note-sticky note-icon"></i>
+				</div>
+				<div class="flex flex-row items-center px-10 py-5">
+					<small>
+						* According to a study conducted by UN-Habitat and the University of Leeds in 2022 using the Spatio-temporal Quantification of Plastic Pollution Origins and Transportation (SPOT) model with recently collected Waste Wise Cities Tool data inputs.
+					</small>
+				</div>
+			</div>
+			{/if}
+		</div>
+
+		<div class="bg-section3">
+			{#if show && y >= 300}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section3-content1 mx-10 lg:mx-36 text-white">
 				<span class="bg-black">
-					Every year, the world generated about 2.3 billion tonnes of municipal solid waste, of which
-				</span>
-				<span class="bg-sky">45% is mismanaged.</span>
-			</p>
-		</div>
-	</div>
-	<div class="bg-section2">
-		<div class="flex flex-row section2-content items-center justify-center mx-10 lg:mx-36">
-			<p class="text-white">
-				<span class="bg-black">This resulted in an estimated</span>
-				<span class="bg-sky">60 million tonnes of plastic per year from the municipal solid waste stream</span>
-				<span class="bg-black">pollute the environment including water bodies, due to lack of collection services and mismanagement of solid waste."</span>
-			</p>
-		</div>
-		<div class="section2-notes mx-7 lg:mx-36 rounded-md flex flex-row items-center py-5 px-10">
-			<small>
-				* According to a study conducted by UN-Habitat and the University of Leeds in 2022 using the Spatio-temporal Quantification of Plastic Pollution Origins and Transportation (SPOT) model with recently collected Waste Wise Cities Tool data inputs.
-			</small>
-		</div>
-	</div>
-	<div class="bg-section3">
-		<div class="section3-content1 mx-10 lg:mx-36 text-white">
-			<span class="bg-black">
-				This number would be even higher without the informal waste and recovery sector (IWRS), which significantly contributes to improving solid waste management by collecting, segregating, processing and recycling plastic and other discarded materials globally.
-			</span>
-		</div>
-		<div class="section3-content2 mx-10 lg:mx-36 text-white">
-			<p>
-				Conservative estimates suggest that the IWRS consist of 15 million people, recovering up to 58% of the recycled waste globally.
-			</p>
-		</div>
-		<div class="section3-content3 mx-10 lg:mx-36 text-white">
-			<div>
-				<span class="bg-sky heading p-1">
-					IWRS
+					This number would be even higher without the informal waste and recovery sector (IWRS), which significantly contributes to improving solid waste management by collecting, segregating, processing and recycling plastic and other discarded materials globally.
 				</span>
 			</div>
-			<div>
-				<span class="bg-black subheading">
-					INFORMAL WASTE AND RECOVERY SECTOR
-				</span>
+			{/if}
+			{#if show && y >= 400}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section3-content2 mx-10 lg:mx-36 text-white">
+				<p>
+					Conservative estimates suggest that the IWRS consist of 15 million people, recovering up to 58% of the recycled waste globally.
+				</p>
 			</div>
-			<div class="mt-2">
-				<span class="bg-black">
-					is a sector of the informal economy where workers and economic units are involved in solid waste collection and recovery activities which are – in law or in practice – not covered or insufficiently covered by formal arrangements.
-				</span>
+			{/if}
+
+			{#if show && y >= 500}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section3-content3 mx-10 lg:mx-36 text-white">
+				<div>
+					<span class="bg-sky heading p-1">
+						IWRS
+					</span>
+				</div>
+				<div>
+					<span class="bg-black subheading">
+						INFORMAL WASTE AND RECOVERY SECTOR
+					</span>
+				</div>
+				<div class="mt-2">
+					<span class="bg-black">
+						is a sector of the informal economy where workers and economic units are involved in solid waste collection and recovery activities which are – in law or in practice – not covered or insufficiently covered by formal arrangements.
+					</span>
+				</div>
+			</div>
+			{/if}
+
+			{#if show && y >= 600}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section3-content4 mx-10 lg:mx-36 text-white">
+				<div>
+					A
+					<span class="heading">
+						JUST TRANSITION
+					</span>
+				</div>
+				<div>
+					of the IWRS means that the transition to sustainable production and consumption of plastic is designed in a manner that is as fair, inclusive and equitable as possible to the IWRS, generating and preserving decent work opportunities, and leaving no one behind.
+				</div>
+			</div>
+			{/if}
+			<div class="section3-content5 mx-10 lg:mx-36 text-white">
+				{#if show && y >= 700}
+				<div transition:fade={{ delay: 200, duration: 10000 }} class="my-20">
+					<span class="bg-black">
+						Solutions can only be sustainable if those who are affected are able to contribute to the decision-making process with thoughts, knowledge and expectations.
+					</span>
+				</div>
+				{/if}
+
+				{#if show && y >= 800}
+				<div transition:fade={{ delay: 200, duration: 10000 }} class="my-20">
+					<span class="bg-black">
+						Though their contribution to public health, cleaning communities, resource efficiency and circular economy is clear, they are disproportionately affected by the plastic pollution. Many of those are women, youth, and often children.
+					</span>
+				</div>
+				{/if}
+
+				{#if show && y >= 900}
+				<div transition:fade={{ delay: 200, duration: 10000 }} class="my-20">
+					<span class="bg-black">
+						They often face unhealthy working conditions and are exposed to severe occupational and health impacts from hazardous materials.
+					</span>
+				</div>
+				{/if}
 			</div>
 		</div>
-		<div class="section3-content4 mx-10 lg:mx-36 text-white">
-			<div>
-				A
-				<span class="heading">
-					 JUST TRANSITION
-				</span>
+		
+		<div class="bg-section4">
+			{#if show && y >= 1000}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section4-content1 mx-10 lg:mx-36 text-white">
+				<p class="text-white">
+					<span class="bg-black">This resulted in an estimated</span>
+					<span class="bg-sky">60 million tonnes of plastic per year from the municipal solid waste stream</span>
+					<span class="bg-black">pollute the environment including water bodies, due to lack of collection services and mismanagement of solid waste."</span>
+				</p>
 			</div>
-			<div>
-				of the IWRS means that the transition to sustainable production and consumption of plastic is designed in a manner that is as fair, inclusive and equitable as possible to the IWRS, generating and preserving decent work opportunities, and leaving no one behind.
+			{/if}
+
+			{#if show && y >= 1100}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section4-content2 mx-10 lg:mx-36 text-white">
+				<p>
+					<span class="bg-sky">This number would be even higher</span>
+					<span class="bg-black">
+						without the informal waste and recovery sector (IWRS), which significantly contributes to improving solid waste management by collecting, segregating, processing and recycling plastic and other discarded materials globally.
+					</span>
+				</p>
 			</div>
-		</div>
-		<div class="section3-content5 mx-10 lg:mx-36 text-white">
-			<div class="my-20">
-				<span class="bg-black">
-					Solutions can only be sustainable if those who are affected are able to contribute to the decision-making process with thoughts, knowledge and expectations.
-				</span>
+			{/if}
+
+			{#if show && y >= 1200}
+			<div transition:fade={{ delay: 200, duration: 10000 }} class="section4-notes relative mx-7 lg:mx-36 rounded-md">
+				<div>
+					<i class="fa fa-search p-2 text-gray-400 search-icon"></i>
+					<i class="fa fa-note-sticky note-icon fa-2x"></i>
+				</div>
+				<div class=" flex flex-row items-center py-7 px-10">
+					<small>
+						* According to a study conducted by UN-Habitat and the University of Leeds in 2022 using the Spatio-temporal Quantification of Plastic Pollution Origins and Transportation (SPOT) model with recently collected Waste Wise Cities Tool data inpu
+					</small>
+				</div>
 			</div>
-			<div class="my-20">
-				<span class="bg-black">
-					Though their contribution to public health, cleaning communities, resource efficiency and circular economy is clear, they are disproportionately affected by the plastic pollution. Many of those are women, youth, and often children.
-				</span>
-			</div>
-			<div class="my-20">
-				<span class="bg-black">
-					They often face unhealthy working conditions and are exposed to severe occupational and health impacts from hazardous materials.
-				</span>
-			</div>
+			{/if}
 		</div>
-	</div>
-	<div class="bg-section4">
-		<div class="section4-content1 mx-10 lg:mx-36 text-white">
-			<p class="text-white">
-				<span class="bg-black">This resulted in an estimated</span>
-				<span class="bg-sky">60 million tonnes of plastic per year from the municipal solid waste stream</span>
-				<span class="bg-black">pollute the environment including water bodies, due to lack of collection services and mismanagement of solid waste."</span>
-			</p>
-		</div>
-		<div class="section4-content2 mx-10 lg:mx-36 text-white">
-			<p>
-				<span class="bg-sky">This number would be even higher</span>
-				<span class="bg-black">
-					without the informal waste and recovery sector (IWRS), which significantly contributes to improving solid waste management by collecting, segregating, processing and recycling plastic and other discarded materials globally.
-				</span>
-			</p>
-		</div>
-		<div class="section4-notes mx-7 lg:mx-36 rounded-md flex flex-row items-center py-7 px-10">
-			<small>
-				* According to a study conducted by UN-Habitat and the University of Leeds in 2022 using the Spatio-temporal Quantification of Plastic Pollution Origins and Transportation (SPOT) model with recently collected Waste Wise Cities Tool data inpu
-			</small>
-		</div>
-	</div>
-</section>
+	</section>
 
 <style>
-	.parallax {
+	/* .parallax {
 		background-image: url($lib/images/mountains.jpg);
 		position: absolute;
 		top:100vh;
@@ -133,7 +185,7 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-	}
+	} */
 	.parallax-video{
 		position: absolute;
 		top:85vh;
@@ -235,6 +287,15 @@
 		/* background-color: #0E38A4; */
 		background-color: #FF0000;
 		color:#fff;
+	}
+
+	.search-icon{
+		transform:rotate(70deg); z-index:11; position:absolute; font-size:20px; top:-12px; left:-27px;
+	}
+
+	.note-icon{
+		transform:rotate(7deg);
+		text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000; font-size:32px; position:absolute; top:-10px; left:-10px;
 	}
 
 	.bg-section3{

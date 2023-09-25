@@ -42,18 +42,18 @@
 		<div class="flex flex-row ">
 			<div class="corner mr-10">
 				<a href="https://kit.svelte.dev">
-					<img src={unoLogo} alt="SvelteKit" style="width:55px; height:40px;"/>
+					<img src={unoLogo} alt="SvelteKit" class="header-logo"/>
 				</a>
 			</div>
 			<div class="corner">
 				<a href="https://kit.svelte.dev">
-					<img src={unoLogo} alt="SvelteKit" style="width:55px; height:40px;"/>
+					<img src={unoLogo} alt="SvelteKit" class="header-logo"/>
 				</a>
 			</div>
 		</div>
 		<div class="corner">
 			<a href="https://kit.svelte.dev">
-				<img src={unoLogo} alt="SvelteKit" style="width:55px; height:40px;"/>
+				<i class="fa-solid fa-language text-white language-icon"></i>
 			</a>
 		</div>
 	</div>
@@ -69,6 +69,7 @@
 		height:70px;
 		z-index:111;
 	}
+
 	.corner {
 		width: 3em;
 		height: 3em;
@@ -86,6 +87,14 @@
 		width: 2em;
 		height: 2em;
 		object-fit: contain;
+	}
+
+	.corner .header-logo{
+		width:55px; height:40px;
+	}
+
+	.language-icon{
+		font-size:30px;
 	}
 
 	/* nav {
